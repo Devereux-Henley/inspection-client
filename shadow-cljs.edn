@@ -1,0 +1,22 @@
+{
+ :dependencies [
+                [binaryage/devtools "0.9.7"]
+                [cider/cider-nrepl "0.16.0-SNAPSHOT"]
+                [org.omcljs/om "1.0.0-beta1"]
+                [fulcrologic/fulcro "1.0.0"]
+                [org.clojure/clojurescript "1.9.946"]
+                ]
+ :source-paths ["source"]
+ :nrepl {:port 1349}
+ :builds {:client {:target :browser
+                   :output-dir "public/js"
+                   :asset-path "/js"
+                   :modules {:main {:entries [inspection-client.core]}}
+                   :devtools
+                   {:before-load inspection-client.core/stop
+                    :after-load inspection-client.core/start
+                    :http-root "public"
+                    :http-port 8080
+                    :preloads [devtools.preload]
+                    }}}
+ }

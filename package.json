@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "create-react-class": "^15.6.2",
+    "intl-messageformat": "^2.2.0",
+    "react": "^15.6.2-0",
+    "react-dom": "^15.6.2-0"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.0.105"
+  }
+}
