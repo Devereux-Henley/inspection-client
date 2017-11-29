@@ -16,4 +16,4 @@
   (render
     [this]
     (let [{:keys [app/title]} (om/props this)]
-      (dom/div nil title))))
+      (dom/div nil (str "Title: " title)))))

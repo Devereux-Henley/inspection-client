@@ -4,6 +4,8 @@
                 [cider/cider-nrepl "0.16.0-SNAPSHOT"]
                 [org.omcljs/om "1.0.0-beta1"]
                 [fulcrologic/fulcro "1.2.1"]
+                [fulcrologic/fulcro "1.0.0"]
+                [fulcrologic/fulcro-inspect "0.1.0-SNAPSHOT"]
                 [org.clojure/clojurescript "1.9.946"]
                 ]
  :source-paths ["source"]
@@ -17,6 +19,6 @@
                     :after-load inspection-client.core/start
                     :http-root "public"
                     :http-port 8080
-                    :preloads [devtools.preload]
+                    :preloads [devtools.preload fulcro.inspect.preload]
                     }}}
  }
