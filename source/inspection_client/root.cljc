@@ -1,11 +1,13 @@
 (ns inspection-client.root
   (:require
+   [clojure.pprint :as pprint]
    [fulcro.client.routing :as routing]
    [fulcro-css.css :as css]
    [inspection-client.assets.css :refer [global-css]]
    [inspection-client.components.navigation-bar :refer [NavigationBar navigation-bar-factory]]
    [inspection-client.router :refer [routing-tree]]
    [inspection-client.router.root :refer [RootRouter root-router-factory]]
+   [inspection-client.util.css :refer [routes-with-children]]
    [fulcro.client.core :as fulcro-client]
    [om.dom :as dom]
    [om.next :as om]))
@@ -17,7 +19,7 @@
     [])
   (include-children
     [this]
-    [])
+    (conj (routes-with-children RootRouter) NavigationBar))
   static css/Global
   (global-rules
     [this]
