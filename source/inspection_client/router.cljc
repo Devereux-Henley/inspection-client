@@ -10,4 +10,7 @@
     (routing/make-route
       :about
       [(routing/router-instruction :router/root [:about :root])])
+    (routing/make-route
+      :login
+      [(routing/router-instruction :router/root [:login :root])])
     ))

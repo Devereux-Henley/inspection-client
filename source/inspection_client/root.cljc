@@ -30,7 +30,7 @@
     (merge
       routing-tree
       {:router/root (fulcro-client/get-initial-state RootRouter {})
-       :navigation-bar/navigation-state {:navigation-bar/page-keys [:index :about]}}))
+       :navigation-bar/navigation-state {:navigation-bar/page-keys [:index :about :login]}}))
   static om/IQuery
   (query
     [this]
