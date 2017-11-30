@@ -30,5 +30,5 @@
              :border-color palette/input-border-color
              :color palette/retro-green-glowing-text
              :caret-color palette/retro-green-glowing-text}]
-    [(selectors/selector (selectors/input placeholder)) {:color palette/retro-green-glowing-text
-                                                         :text-shadow palette/retro-green-text-shadow}]]])
+    [(selectors/input placeholder) {:color palette/retro-green-glowing-text
+                                    :text-shadow palette/retro-green-text-shadow}]]])
