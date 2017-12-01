@@ -1,32 +1,24 @@
 (ns inspection-client.components.navigation-bar
   (:require
+   [clojure.string]
+   [fulcro.client.core :as fulcro-client]
    [fulcro-css.css :as css]
+   [inspection-client.components.navigation-bar.css :as navigation-css]
    [om.dom :as dom]
    [om.next :as om]))
 
-(om/defui ^:once NavigationBar
-  static css/CSS
-  (local-rules
-    [this]
-    [[:.navigation-bar {:background-color "#D3D3D5"
-                        :display "flex"
-                        :justify-content "space-evenly"
-                        :width "100%"}]])
-  (include-children
-    [this]
-    [])
-  static om/IQuery
-  (query
-    [this]
-    [:navigation-bar/page-keys])
-  Object
-  (render
-    [this]
-    (let [{:keys [navigation-bar/page-keys]} (om/props this)
-          {:keys [routing/route-fn!]} (om/get-computed this)
-          {:keys [navigation-bar]} (css/get-classnames NavigationBar)]
-      (dom/div
-        #js {:className navigation-bar}
-        (map #(dom/a #js {:key %2 :onClick (partial route-fn! %1)} (name %1)) page-keys (range))))))
+(fulcro-client/defsc NavigationBar
+  [this {:keys [navigation-bar/page-keys]} {:keys [routing/route-fn!]} children]
+  {:query [:navigation-bar/page-keys]
+   :css [navigation-css/css]
+   :css-include []}
+  (let [{:keys [navigation-bar navigation-link navigation-link-group]} (css/get-classnames NavigationBar)]
+    (dom/div
+     #js {:className navigation-bar}
+     (dom/div
+      #js {:className navigation-link-group}
+      (map
+       #(dom/a #js {:key %2 :className navigation-link :onClick (partial route-fn! %1)} (clojure.string/capitalize (name %1)))
+       page-keys (range))))))
 
 (defonce navigation-bar-factory (om/factory NavigationBar))
