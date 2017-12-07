@@ -1,3 +1,2 @@
-{:npm-deps {:create-react-class "15.6.2"
-            :react              "^15.6.2-0"
-            :react-dom          "^15.6.2-0"}}
+{:npm-deps {:react              "^16.2.0"
+            :react-dom          "^16.2.0"}}

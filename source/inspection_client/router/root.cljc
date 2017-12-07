@@ -4,7 +4,7 @@
    [inspection-client.views.about :refer [About]]
    [inspection-client.views.index :refer [Index]]
    [inspection-client.views.login :refer [Login]]
-   [om.next :as om]))
+   [fulcro.client.primitives :as primitives]))
 
 (defrouter RootRouter :router/root
   (ident [this props] [(:page props) :root])
@@ -12,4 +12,4 @@
   :about About
   :login Login)
 
-(defonce root-router-factory (om/factory RootRouter))
+(defonce root-router-factory (primitives/factory RootRouter))
