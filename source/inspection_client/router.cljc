@@ -13,4 +13,7 @@
     (routing/make-route
       :login
       [(routing/router-instruction :router/root [:login :root])])
+    (routing/make-route
+      :registration
+      [(routing/router-instruction :router/root [:registration :root])])
     ))

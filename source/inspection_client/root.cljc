@@ -20,7 +20,7 @@
    :initial-state (fn [params] (merge
                                  routing-tree
                                  {:router/root (primitives/get-initial-state RootRouter {})
-                                  :navigation-bar/navigation-state {:navigation-bar/page-keys [:index :about :login]}}))}
+                                  :navigation-bar/navigation-state {:navigation-bar/page-keys [:index :about :login :registration]}}))}
   (dom/div #js {:key react-key}
     (navigation-bar-factory (primitives/computed navigation-state {:routing/route-fn! #(primitives/transact! this `[(routing/route-to {:handler ~%})])}))
     (dom/div #js {:className application-root}
