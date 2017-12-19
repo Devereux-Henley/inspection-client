@@ -11,17 +11,17 @@
    [fulcro.client.primitives :as primitives]))
 
 (primitives/defsc Root
-  [this {:keys [ui/react-key router/root navigation-bar/navigation-state]} computed {:keys [application-root]}]
+  [this {:keys [ui/react-key router/root navigation-bar/navigation-state]} computed {:keys [application-root page-root]}]
   {:query [:ui/react-key
            {:navigation-bar/navigation-state (primitives/get-query NavigationBar)}
            {:router/root (primitives/get-query RootRouter)}]
    :css [global-css]
    :css-include (fn [] (conj (routes-with-children RootRouter-Union) NavigationBar))
    :initial-state (fn [params] (merge
-                                 routing-tree
-                                 {:router/root (primitives/get-initial-state RootRouter {})
-                                  :navigation-bar/navigation-state {:navigation-bar/page-keys [:index :about :login :registration]}}))}
-  (dom/div #js {:key react-key}
-    (navigation-bar-factory (primitives/computed navigation-state {:routing/route-fn! #(primitives/transact! this `[(routing/route-to {:handler ~%})])}))
-    (dom/div #js {:className application-root}
-      (root-router-factory root))))
+                                routing-tree
+                                {:router/root (primitives/get-initial-state RootRouter {})
+                                 :navigation-bar/navigation-state {:navigation-bar/page-keys [:login :registration]}}))}
+  (dom/div #js {:key react-key :className page-root}
+           (dom/div #js {:className application-root}
+                    (root-router-factory root))
+           (navigation-bar-factory (primitives/computed navigation-state {:routing/route-fn! #(primitives/transact! this `[(routing/route-to {:handler ~%})])}))))

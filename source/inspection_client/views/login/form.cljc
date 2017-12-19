@@ -2,7 +2,8 @@
   (:require
    [fulcro-css.css :as css]
    [fulcro.ui.forms :as forms]
-   [inspection-client.views.login.form.css :as form-css]
+   [inspection-client.assets.form.css :as form-css]
+   [inspection-client.views.login.form.css :as login-form-css]
    [fulcro.client.dom :as dom]
    [fulcro.client.primitives :as primitives]))
 
@@ -15,7 +16,7 @@
                  (forms/html5-input :user/password "password" :placeholder "Password")]
    :query [:db/id :user/email :user/password forms/form-key]
    :ident [:login-form/by-id :db/id]
-   :css [form-css/css]
+   :css [login-form-css/css form-css/css]
    :css-include []}
   (dom/div #js {:className form}
     (dom/div #js {:className form-field}

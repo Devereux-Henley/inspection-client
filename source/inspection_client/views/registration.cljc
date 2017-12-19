@@ -10,7 +10,7 @@
   [this {:keys [form/registration-form]} computed classes]
   {:query [:page {:form/registration-form (primitives/get-query form/RegistrationForm)}]
    :css [[]]
-   :css-include []
+   :css-include [form/RegistrationForm]
    :initial-state (fn [params] {:page :registration
                                 :form/registration-form (fulcro-forms/build-form
                                                           form/RegistrationForm
